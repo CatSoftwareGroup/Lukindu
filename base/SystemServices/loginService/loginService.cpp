@@ -84,6 +84,14 @@ string b64_decode(string input){
     
 }
 
-int main(int argc, char const *argv[]){
+string getHostname(){
+    ifstream hostFile("\\rootfs\\etc\\hostname.cfg");
+    string value;
+    getline(hostFile,value);
+    return value;
+}
 
+
+int main(int argc, char const *argv[]){
+    
 }
