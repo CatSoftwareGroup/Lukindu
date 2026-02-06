@@ -81,6 +81,8 @@ int main(int argc, char const *argv[]){
     string inputPassword;
     string encodedPassword;
     bool loginOK = false;
+    time_t timestamp;
+    time(&timestamp);
     while (true) {
         while (loginOK = true) {
             cout << endl << "login: ";
@@ -88,25 +90,25 @@ int main(int argc, char const *argv[]){
             cout << endl << "Password: ";
             cin >> inputPassword;
             encodedPassword = b64_encode(inputPassword);
-            if (verifyLogin(inputLogin,encodedPassword,"\\rootfs\\etc\\login.access"),0){
-                loginOK = true;
-            } else {
+            if (verifyLogin(inputLogin,encodedPassword,"\\rootfs\\etc\\login.access")){
+                cout << loginOK << endl;
+                cout << inputLogin << endl << encodedPassword << endl;
                 cout << endl << "Login or password incorrect";
+            } else {
+                setVariable("usrinput", inputLogin);
+                setVariable("HOME","\\rootfs\\Users\\" + inputLogin);
+                cout << endl << "Last Login: ";
+                cout << ctime(&timestamp);
+                cout << endl;
+                ifstream file("\\rootfs\\etc\\motd.txt");
+                string content;
+                while(file >> content) {
+                    cout << content << ' ';
+                }   
+                cout << endl;  
+                system("\\rootfs\\bin\\shell.cmd");
+                loginOK = false;
             }
         }
-        time_t timestamp;
-        time(&timestamp);
-        cout << endl << "Last Login: ";
-        cout << ctime(&timestamp);
-        cout << endl;
-        ifstream file("\\rootfs\\etc\\motd.txt");
-        string content;
-        setVariable("usrinput", inputLogin);
-        setVariable("HOME","\\rootfs\\Users\\" + inputLogin);
-        while(file >> content) {
-            cout << content << ' ';
-        }     
-        system("\\rootfs\\bin\\shell.cmd");
-        loginOK = false;
     }
 }
