@@ -23,7 +23,7 @@ int main(int argc, char const *argv[]){
     } else {
         string user = argv[1];
         try {
-            if(!filesystem::remove("\\rootfs\\usr\\" + user)){
+            if(!filesystem::remove("\\rootfs\\usr\\" + user + ".cfg")){
                 cout << argv[0] << ": No user to delete";
             }
         }
