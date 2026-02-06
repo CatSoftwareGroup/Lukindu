@@ -3,15 +3,17 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-
+#include <io.h>
+#include <ctime>
 
 
 using namespace std;
 
 bool verifyLogin(const string& username,const string& password,const string& filename);
 string b64_encode(string input);
-string b64_decode(string input);
-
+void setVariable(std::wstring name, std::wstring value);
+string getHostname();
+void setVariable(std::string name, std::string value);
 
 bool verifyLogin(const string& username,const string& password,const string& filename){
     ifstream inFile(filename);
@@ -61,29 +63,6 @@ string b64_encode(string input){
     
 }
 
-string b64_decode(string input){
-    string out; //out: This will hold the resulting decoded string.
-    vector<int> T(256,-1);//T: A lookup table initialized to -1 for all 256 ASCII characters.
-    for (int i = 0; i < 64; i++){
-        T["ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"[i]] = i;
-    }
-    
-    int val=0, valb=-8;
-    for (char c : input) {//For each character "c" in the input string, it checks if "c" is a valid Base64 character using the lookup table "T". 
-        if (T[c] == -1){//If valid, it shifts "val" left by 6 bits and adds the value from T[c].
-            break;
-        }
-        val = (val << 6) + T[c]; 
-        valb += 6;
-        if (valb >= 0){//If there are at least 8 bits in "val", it extracts the top 8 bits and appends the corresponding character to "out".
-            out.push_back(char((val>>valb)&0xFF));
-            valb -= 8;
-        }
-    }
-    return out;
-    
-}
-
 string getHostname(){
     ifstream hostFile("\\rootfs\\etc\\hostname.cfg");
     string value;
@@ -91,7 +70,43 @@ string getHostname(){
     return value;
 }
 
+void setVariable(std::string name, std::string value) {
+    _putenv_s(name.c_str(), value.c_str());
+}
 
 int main(int argc, char const *argv[]){
-    
+    cout << getHostname() << "  Login" << endl << endl;
+    setVariable("systemhostname",getHostname());
+    string inputLogin;
+    string inputPassword;
+    string encodedPassword;
+    bool loginOK = false;
+    while (true) {
+        while (loginOK = false) {
+            cout << endl << "login: ";
+            cin >> inputLogin;
+            cout << endl << "Password: ";
+            cin >> inputPassword;
+            encodedPassword = b64_encode(inputPassword);
+            if (verifyLogin(inputLogin,encodedPassword,"\\rootfs\\etc\\login.access"),0){
+                loginOK = true;
+            } else {
+                cout << endl << "Login or password incorrect";
+            }
+        }
+        time_t timestamp;
+        time(&timestamp);
+        cout << endl << "Last Login: ";
+        cout << ctime(&timestamp);
+        cout << endl;
+        ifstream file("\\rootfs\\etc\\motd.txt");
+        string content;
+        setVariable("usrinput", inputLogin);
+        setVariable("HOME","\\rootfs\\Users\\" + inputLogin);
+        while(file >> content) {
+            cout << content << ' ';
+        }     
+        system("\\rootfs\\bin\\shell.cmd");
+        loginOK = false;
+    }
 }

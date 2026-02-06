@@ -1,6 +1,7 @@
 @echo off
 rem Compiler configuration
 set CC=clang -v
+set CXX=clang++ -v
 echo Building Lukindu
 mkdir build
 %CC% kernel\kernel.c -o build\mach_kernel.exe
@@ -18,7 +19,6 @@ echo Color Display > build\dev\display
 echo USB Device > build\dev\usb
 copy base\SystemServices\Lukit\initrc.cmd build\System\Services
 copy base\SystemServices\DriverLoader\drvloader.cmd build\System
-copy base\SystemServices\LoginService\loginService.cmd build\System\Services
 copy base\SystemServices\Lukit\su_shell.cmd build\System\Lukit
 mkdir build\Users\root
 mkdir build\dev
@@ -29,6 +29,7 @@ mkdir build\usr
 mkdir build\bin
 mkdir build\boot
 mkdir build\boot\drivers
+%CXX% base\SystemServices\LoginService\LoginService.cpp -o build\System\Services\loginService.exe
 %CC% base\drivers\LukinduSATAController.c -o build\boot\drivers\LukinduSATAController.exe -lsetupapi
 %CC% base\drivers\LukinduDisplayDriver.c -o build\boot\drivers\LukinduDisplayDriver.exe
 %CC% base\drivers\LukinduUSBDriver.c -o build\boot\drivers\LukinduUSBDriver.exe
@@ -38,8 +39,8 @@ copy base\SystemUtils\pkgutil\unzip.exe build\bin\unzip.exe
 copy base\SystemUtils\pkgutil\zip.exe build\bin\zip.exe
 copy base\SystemUtils\pkgutil\bzip2.dll build\bin\bzip2.dll
 echo Welcome to Lukindu > build\etc\motd.txt
-echo localhost> build\etc\hostname.txt
-echo toor> build\usr\root.cfg
+echo localhost> build\etc\hostname.cfg
+echo "root,dG9vcg=="> build\etc\login.access
 echo Build %date% %time%> build\System\sysinfo\kernelbuild.plist
 set /p kernelversion=<"build\System\sysinfo\kernelversion.plist"
 set /p kernelrelease=<"build\System\sysinfo\kernelrelease.plist"
