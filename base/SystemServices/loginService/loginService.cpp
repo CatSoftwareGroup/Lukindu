@@ -82,7 +82,7 @@ int main(int argc, char const *argv[]){
     string encodedPassword;
     bool loginOK = false;
     while (true) {
-        while (loginOK = false) {
+        while (loginOK = true) {
             cout << endl << "login: ";
             cin >> inputLogin;
             cout << endl << "Password: ";
