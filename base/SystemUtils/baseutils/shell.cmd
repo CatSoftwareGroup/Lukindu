@@ -1,4 +1,5 @@
 @echo off
+echo Last Login %date% %time%
 if %usrinput% equ root goto rootprompt
 goto usrprompt
 
@@ -18,3 +19,4 @@ goto end
 
 
 :end
+cls

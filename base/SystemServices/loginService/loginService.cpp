@@ -63,6 +63,8 @@ string getHostname(){
 }
 
 void loginUser() {
+    cout << getHostname() << " Login" << endl << endl;
+    setVariable("systemhostname",getHostname());
     string user, password;
 
     cout << "Login: ";
@@ -84,12 +86,8 @@ void loginUser() {
     string base64TypedPassword = base64_encode(password);
 
     if (base64TypedPassword == base64SavedPassword) {
-        time_t timestamp;
-        time(&timestamp);
         setVariable("usrinput", user);
         setVariable("HOME","\\rootfs\\Users\\" + user);
-        cout << endl << "Last Login: ";
-        cout << ctime(&timestamp);
         cout << endl;
         ifstream file("\\rootfs\\etc\\motd.txt");
         string content;
@@ -104,8 +102,6 @@ void loginUser() {
 }
 
 int main() {
-    cout << getHostname() << " Login" << endl << endl;
-    setVariable("systemhostname",getHostname());
     while (true) {
         loginUser();
     }
