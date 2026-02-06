@@ -40,7 +40,7 @@ copy base\SystemUtils\pkgutil\zip.exe build\bin\zip.exe
 copy base\SystemUtils\pkgutil\bzip2.dll build\bin\bzip2.dll
 echo Welcome to Lukindu > build\etc\motd.txt
 echo localhost> build\etc\hostname.cfg
-echo "root,dG9vcg=="> build\etc\login.access
+echo password=dG9vcg==> build\usr\root.cfg
 echo Build %date% %time%> build\System\sysinfo\kernelbuild.plist
 set /p kernelversion=<"build\System\sysinfo\kernelversion.plist"
 set /p kernelrelease=<"build\System\sysinfo\kernelrelease.plist"
