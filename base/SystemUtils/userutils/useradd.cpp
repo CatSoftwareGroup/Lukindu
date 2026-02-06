@@ -46,12 +46,6 @@ string base64_encode(const string& input)
 }
 
 
-
-void helplist(string progname){
-
-}
-
-
 int main(int argc, char const *argv[]){
     string password;
     string user;
