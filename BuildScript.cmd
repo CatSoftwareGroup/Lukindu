@@ -32,6 +32,7 @@ mkdir build\boot\drivers
 %CXX% base\SystemServices\LoginService\LoginService.cpp -o build\System\Services\loginService.exe
 %CXX% base\SystemUtils\userutils\useradd.cpp -o build\bin\useradd.exe
 %CXX% base\SystemUtils\userutils\userdel.cpp -o build\bin\userdel.exe
+%CXX% base\SystemUtils\userutils\passwd.cpp -o build\bin\passwd.exe
 %CC% base\drivers\LukinduSATAController.c -o build\boot\drivers\LukinduSATAController.exe -lsetupapi
 %CC% base\drivers\LukinduDisplayDriver.c -o build\boot\drivers\LukinduDisplayDriver.exe
 %CC% base\drivers\LukinduUSBDriver.c -o build\boot\drivers\LukinduUSBDriver.exe
