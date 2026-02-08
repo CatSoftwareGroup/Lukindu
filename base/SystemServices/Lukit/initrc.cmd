@@ -10,12 +10,12 @@ if exist \rootfs\System\Services\X11Service.cmd (
 	call \rootfs\System\Services\X11Service.cmd
 	goto end
 ) else (
-	call \rootfs\System\Services\loginService.cmd
+	call \rootfs\System\Services\loginService.exe
 	goto end
 )
 
 :loginservice
-call \rootfs\System\Services\loginService.cmd
+call \rootfs\System\Services\loginService.exe
 goto end
 
 :end
