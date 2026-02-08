@@ -25,4 +25,5 @@ int main(int argc, char const *argv[]){
             cout << text << endl;
         }
     }
+    return 0;
 }
