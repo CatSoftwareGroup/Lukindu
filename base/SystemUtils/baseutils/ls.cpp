@@ -9,8 +9,9 @@
 #include <string>
 #include <filesystem>
 
-
+//Future implementation 
 namespace fs = std::filesystem;
+
 using namespace std;
 
 
@@ -27,6 +28,11 @@ int main(int argc, char const *argv[]){
         string pathtolist;
         string listcommand;
         string fullcommand;
+        /*
+        * 
+        * Alias Implementation 
+        * I couldn't implement it with the filesystem library, but I'll try again in the future.
+        */
         if (argc < 2) {
             listcommand = "dir /b ";
             pathtolist = ".";
