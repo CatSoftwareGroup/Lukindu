@@ -48,7 +48,7 @@ string getSystemName(){
     return value;
 }
 
-void GetProcessorName()
+void getProcessorName()
 {
 	int CPUInfo[4] = {-1};
 	char CPUBrandString[0x40];	
@@ -76,7 +76,77 @@ string getKernelName(){
     return "Lukindu";
 }
 
+void helpdialog(){
+    cout << "Lukindu Baseutils - uname command" << endl << endl << endl;
+    cout << "Print certain system information. With no OPTION, same as -s." << endl;
+    cout << "-a, --all" << endl;
+    cout << "     print all information, in the following order, except omit -p and -i if unknown: " << endl;
+    cout << "-s, --kernel-name" << endl;
+    cout << "     print the kernel name" << endl;
+    cout << "-n, --nodename" << endl;
+    cout << "     print the network node hostname " << endl;
+    cout << "-r, --kernel-release" << endl;
+    cout << "     print the kernel release" << endl;
+    cout << "-v, --kernel-version" << endl;
+    cout << "     print the kernel version" << endl;
+    cout << "-m, --machine" << endl;
+    cout << "     print the machine hardware name" << endl;
+    cout << "-p, --processor" << endl;
+    cout << "     print the processor type or \"unknown\" " << endl;
+    cout << "-i, --hardware-platform" << endl;
+    cout << "     print the hardware platform or \"unknown\"" << endl;
+    cout << "-o, --operating-system" << endl;
+    cout << "     print the operating system " << endl;
+    cout << "--help" << endl;
+    cout << "     display this help and exit" << endl;
+}
+
 int main(int argc, char const *argv[]){
+    if (argc < 2){
+        cout << getKernelName();
+    } else if (strcmp(argv[1], "--help") == 0){
+        helpdialog();
+    } else if (strcmp(argv[1], "-h") == 0){
+        helpdialog();
+    } else if (strcmp(argv[1], "-a") == 0){
+        cout << getKernelVersion() << " " << getKernelBuildDate() << " " << getKernelArch() << " " << getHostname() << " " << getSystemName(); 
+    } else if (strcmp(argv[1], "-s") == 0){
+        cout << getKernelName();
+    } else if (strcmp(argv[1], "-r") == 0){
+        cout << getKernelBuildDate();
+    } else if (strcmp(argv[1], "-v") == 0){
+        cout << getKernelVersion();
+    } else if (strcmp(argv[1], "-m") == 0){
+        cout << getKernelArch();
+    } else if (strcmp(argv[1], "-i") == 0){
+        cout << "unknown";
+    } else if (strcmp(argv[1], "-o") == 0){
+        cout << getSystemName();
+    } else if (strcmp(argv[1], "--all") == 0){
+        cout << getKernelVersion() << " " << getKernelBuildDate() << " " << getKernelArch() << " " << getHostname() << " " << getSystemName();
+    } else if (strcmp(argv[1], "--kernel-name") == 0){
+        cout << getKernelName();
+    } else if (strcmp(argv[1], "--nodename") == 0){
+        cout << getHostname();
+    } else if (strcmp(argv[1], "--kernel-release") == 0){
+        cout << getKernelBuildDate();
+    } else if (strcmp(argv[1], "--kernel-version") == 0){
+        cout << getKernelVersion();
+    } else if (strcmp(argv[1], "--machine") == 0){
+        cout << getKernelArch();
+    } else if (strcmp(argv[1], "--processor") == 0){
+        getProcessorName();
+    } else if (strcmp(argv[1], "--hardware-platform") == 0){
+        cout << "unknown";
+    } else if (strcmp(argv[1], "--operating-system") == 0){
+        cout << getSystemName();
+    } else if (strcmp(argv[1], "-n") == 0){
+        cout << getHostname();
+    } else if (strcmp(argv[1], "-p") == 0){
+        getProcessorName();
+    } else {
+        cout <<"Error: invalid argument try \"--help\" to more information";
+    }
     
     return 0;
 }
