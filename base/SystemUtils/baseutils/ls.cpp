@@ -23,7 +23,15 @@ int main(int argc, char const *argv[]){
         string pathtolist;
         string listcommand;
         string fullcommand;
-        if (argv[1] == "-l"){
+        if (strcmp(argv[1], "-l") == 0){
+            listcommand = "dir";
+            if (argc < 3){
+                pathtolist = ".";
+            } else {
+                pathtolist = argv[2];
+            }
+            fullcommand = listcommand + " " + pathtolist;
+            system(fullcommand.c_str());
         } else if (argv[1] == "-la"){
 
         } else if (argv[1] == "-a"){
