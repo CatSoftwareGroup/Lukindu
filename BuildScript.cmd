@@ -45,11 +45,7 @@ mkdir build\boot\drivers
 %CC% base\drivers\LukinduSATAController.c -o build\boot\drivers\LukinduSATAController.exe -lsetupapi
 %CC% base\drivers\LukinduDisplayDriver.c -o build\boot\drivers\LukinduDisplayDriver.exe
 %CC% base\drivers\LukinduUSBDriver.c -o build\boot\drivers\LukinduUSBDriver.exe
-copy base\SystemUtils\baseutils\shell.cmd.cmd build\bin\shell.cmd
-copy base\SystemUtils\pkgutil\pkgutil.cmd build\bin\pkgutil.cmd
-copy base\SystemUtils\pkgutil\unzip.exe build\bin\unzip.exe
-copy base\SystemUtils\pkgutil\zip.exe build\bin\zip.exe
-copy base\SystemUtils\pkgutil\bzip2.dll build\bin\bzip2.dll
+copy base\SystemUtils\baseutils\shell.cmd build\bin\shell.cmd
 echo Welcome to Lukindu > build\etc\motd.txt
 echo localhost> build\etc\hostname.cfg
 echo password=dG9vcg==> build\usr\root.cfg
