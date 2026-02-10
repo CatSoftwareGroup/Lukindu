@@ -19,4 +19,3 @@ goto end
 
 
 :end
-cls

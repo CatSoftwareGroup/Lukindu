@@ -96,6 +96,7 @@ void loginUser() {
         }   
         cout << endl;  
         system("\\rootfs\\bin\\shell.cmd");
+        system("cmd /c cls");
     } else {
         cout << "password incorrect\n";
     }
