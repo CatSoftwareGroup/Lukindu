@@ -33,15 +33,15 @@ mkdir build\boot\drivers
 %CXX% base\SystemUtils\userutils\useradd.cpp -o build\bin\useradd.exe
 %CXX% base\SystemUtils\userutils\userdel.cpp -o build\bin\userdel.exe
 %CXX% base\SystemUtils\userutils\passwd.cpp -o build\bin\passwd.exe
-%CXX% base\SystemUtils\baseutils\cat.cpp -o buildl\bin\cat.exe
-%CXX% base\SystemUtils\baseutils\iam.cpp -o buildl\bin\iam.exe
-%CXX% base\SystemUtils\baseutils\ls.cpp -o buildl\bin\ls.exe
-%CXX% base\SystemUtils\baseutils\pwd.cpp -o buildl\bin\pwd.exe
-%CXX% base\SystemUtils\baseutils\rm.cpp -o buildl\bin\rm.exe
-%CXX% base\SystemUtils\baseutils\su.cpp -o buildl\bin\su.exe
-%CXX% base\SystemUtils\baseutils\touch.cpp -o buildl\bin\touch.exe
-%CXX% base\SystemUtils\baseutils\poweroff.cpp -o buildl\bin\poweroff.exe
-%CXX% base\SystemUtils\baseutils\uname.cpp -o buildl\bin\uname.exe
+%CXX% base\SystemUtils\baseutils\cat.cpp -o build\bin\cat.exe
+%CXX% base\SystemUtils\baseutils\iam.cpp -o build\bin\iam.exe
+%CXX% base\SystemUtils\baseutils\ls.cpp -o build\bin\ls.exe
+%CXX% base\SystemUtils\baseutils\pwd.cpp -o build\bin\pwd.exe
+%CXX% base\SystemUtils\baseutils\rm.cpp -o build\bin\rm.exe
+%CXX% base\SystemUtils\baseutils\su.cpp -o build\bin\su.exe
+%CXX% base\SystemUtils\baseutils\touch.cpp -o build\bin\touch.exe
+%CXX% base\SystemUtils\baseutils\poweroff.cpp -o build\bin\poweroff.exe
+%CXX% base\SystemUtils\baseutils\uname.cpp -o build\bin\uname.exe
 %CC% base\drivers\LukinduSATAController.c -o build\boot\drivers\LukinduSATAController.exe -lsetupapi
 %CC% base\drivers\LukinduDisplayDriver.c -o build\boot\drivers\LukinduDisplayDriver.exe
 %CC% base\drivers\LukinduUSBDriver.c -o build\boot\drivers\LukinduUSBDriver.exe
