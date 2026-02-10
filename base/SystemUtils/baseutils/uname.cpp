@@ -13,8 +13,6 @@
 
 using namespace std;
 
-string kernName = "Lukindu";
-
 string getHostname(){
     ifstream hostFile("\\rootfs\\etc\\hostname.cfg");
     string value;
@@ -74,8 +72,8 @@ void GetProcessorName()
     cout << CPUBrandString;
 }
 
-void getKernelName(){
-    cout << kernName;
+string getKernelName(){
+    return "Lukindu";
 }
 
 int main(int argc, char const *argv[]){
