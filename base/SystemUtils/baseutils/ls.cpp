@@ -16,7 +16,11 @@ using namespace std;
 
 
 void helpdialog(){
-
+    cout << "Lukindu Baseutils - ls command" << endl << endl;
+    cout << "\"-a\" - show hidden files" << endl;
+    cout << "\"-l\" - long listing" << endl;
+    cout << "\"-la\" - long listing with hidden files" << endl;
+    cout << "\"-h\" or \"--help\" - long listing with hidden files" << endl;
 }
 
 int main(int argc, char const *argv[]){
