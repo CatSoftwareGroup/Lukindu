@@ -84,7 +84,6 @@ void loginUser(string user) {
             setVariable("usrinput", user);
             setVariable("HOME","\\rootfs\\Users\\" + user);
             system("\\rootfs\\bin\\shell.cmd");
-            system("cmd /c cls");
         } else {
             cout << "password incorrect\n";
         }
