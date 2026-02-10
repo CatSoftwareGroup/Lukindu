@@ -21,7 +21,7 @@ void helpdialog(){
     cout << "\"-a\" - show hidden files" << endl;
     cout << "\"-l\" - long listing" << endl;
     cout << "\"-la\" - long listing with hidden files" << endl;
-    cout << "\"-h\" or \"--help\" - long listing with hidden files" << endl;
+    cout << "\"-h\" or \"--help\" - show this dialog" << endl;
 }
 
 int main(int argc, char const *argv[]){
